@@ -1,8 +1,16 @@
-import { useState } from "react";
-import  Radio  from "./Radio";
+import { useState, useEffect } from "react";
+import Radio from "./Radio";
 
-const AlertComponent = () => {
+const AlertComponent = (props) => {
+  const {onChange} =props ;
   const [selected, setSelected] = useState("Alert 2");
+
+
+  useEffect(() => {
+      onChange(selected);
+      // eslint-disable-next-line
+  }, [selected]);
+
   return (
     <div className="col-lg-2 second">
       <Radio

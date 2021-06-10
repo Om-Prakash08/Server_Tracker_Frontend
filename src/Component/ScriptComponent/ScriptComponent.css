@@ -1,0 +1,14 @@
+.Alert-heading{
+    color: red;
+    font-size: 2.0rem;
+    margin-bottom:.6rem;
+}
+.form-group{
+    margin-bottom: 1rem;
+}
+
+.script-btn{
+    margin-top:0.5rem;
+    font-size: 1.4rem;
+    border-radius: 50%;
+}

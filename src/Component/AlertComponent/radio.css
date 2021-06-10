@@ -3,13 +3,14 @@
     cursor: pointer;
     user-select: none;
     display: flex;
-    height: 3.8rem;
+    height: 4.0rem;
     align-items: center;
     border-radius: 15px;
     padding-left: 0.8rem; 
   }
   .selected-container{
     background-color: rgb(253, 224, 224);
+    border: solid 1px red;
   }
   
   .radio-outer-circle {
