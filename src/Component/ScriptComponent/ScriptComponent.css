@@ -9,6 +9,26 @@
 
 .script-btn{
     margin-top:0.5rem;
-    font-size: 1.4rem;
-    border-radius: 50%;
+    font-size: 1.2rem;
+    border-radius: 10%;
+}
+.third input{
+    /* padding: 10px;
+    padding-top:3.3px ; */
+    text-align: left;
+     
+    height: 40px;
+    /* font-size: 14px; */
+    border-radius: 10px;
+    /* box-shadow: inset 6px 6px 6px #d6e2ee, inset -6px -6px 6px white; */
+}
+
+.plus-icon{
+    font-size: .1rem;
+}
+.script-btn{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    font-size: 1rem;
 }
