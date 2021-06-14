@@ -1,17 +1,4 @@
 
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    margin: 0;
-    /* padding-right: 10px; */
-    /* height: fit-content ; */
-     width: 100%; 
-    background-image:linear-gradient(blue,darkblue) , url("./polaroid.png");
-    background-repeat: no-repeat;
-}
-
 .outer-div{
    padding: 20px;
    height: fit-content;
@@ -74,9 +61,7 @@ body{
 
 
 @media screen and (max-width: 992px) {
-    body{
-        height: fit-content;
-    }
+    
     .containt{
       height: fit-content;
     }
