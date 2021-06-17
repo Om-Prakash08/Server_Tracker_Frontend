@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background-image: linear-gradient(blue, darkblue), url("./img/polaroid.png");
+  background-repeat: no-repeat;
+}
+
+
+@media screen and (max-width: 992px) {
+  body {
+    min-height: fit-content;
+  }
+}
+.error-occured{
+  margin-left:10px ;
+  color:red ;
+}
+.success-occured{
+  color:green ;
+}
