@@ -28,13 +28,15 @@ const ServerComponent = (props) => {
 
   useEffect(() => {
     const getGroupList = async () => {
+     const id=service.serviceId ;
       try {
-        const resp = await axios({
-          method: "GET",
-          url: `http://localhost:5000/servergrp?serviceid=${service.serviceId}`,
-        });
+        const resp = await axios.get(
+          'http://localhost:5000/servergrp',
+          {params: {
+            serviceId:id,
+          }}
+        ); 
         setGroupList(resp.data);
-       // console.log(resp.data);
       } catch (err) {
         console.error(err);
       }
@@ -44,19 +46,23 @@ const ServerComponent = (props) => {
 
   useEffect(() => {
     const getServerList = async () => {
+      const id=group.serverGrpId ;
+      console.log(id);
       try {
-        const resp = await axios({
-          method: "GET",
-          url: `http://localhost:5000/server?serverGrpid=${group.serverGrpId}`,
-        });
+        const resp = await axios.get(
+          "http://localhost:5000/server",
+          {params: {
+            serverGrpId:id,
+          }}
+        );
         setServerList(resp.data);
-      //  console.log(resp.data);
       } catch (err) {
         console.error(err);
       }
     };
     if (group) getServerList();
   }, [group]);
+
 
   // handle change event of the service dropdown
   const handleserviceChange = (obj) => {
