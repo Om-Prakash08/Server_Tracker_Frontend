@@ -4,6 +4,7 @@ import "./ServiceComponent.css";
 import axios from "axios";
 
 const ServerComponent = (props) => {
+  const { setServiceData, serviceData } = props;
   const [service, setService] = useState(null);
   const [serviceList, setServiceList] = useState([]);
   const [group, setGroup] = useState(null);
@@ -28,35 +29,103 @@ const ServerComponent = (props) => {
 
   useEffect(() => {
     const getGroupList = async () => {
+      const id = service.serviceId;
       try {
-        const resp = await axios({
-          method: "GET",
-          url: `http://localhost:5000/servergrp?serviceid=${service.serviceId}`,
+        const resp = await axios.get("http://localhost:5000/servergrp", {
+          params: {
+            serviceId: id,
+          },
         });
         setGroupList(resp.data);
-       // console.log(resp.data);
       } catch (err) {
         console.error(err);
       }
     };
-    if (service) getGroupList();
+    if (service) {
+      getGroupList();
+      setServiceData({
+        serviceId: service.serviceId,
+        serviceName: service.ServiceName,
+        groupId: "",
+        groupName: "",
+        serverId: "",
+        serverName: "",
+        alertId: "",
+        alertName: "",
+      });
+    } else {
+      setServiceData({
+        serviceId: "",
+        serviceName: "",
+        groupId: "",
+        groupName: "",
+        serverId: "",
+        serverName: "",
+        alertId: "",
+        alertName: "",
+      });
+    } // eslint-disable-next-line
   }, [service]);
 
   useEffect(() => {
     const getServerList = async () => {
+      const id = group.serverGrpId;
       try {
-        const resp = await axios({
-          method: "GET",
-          url: `http://localhost:5000/server?serverGrpid=${group.serverGrpId}`,
+        const resp = await axios.get("http://localhost:5000/server", {
+          params: {
+            serverGrpId: id,
+          },
         });
         setServerList(resp.data);
-      //  console.log(resp.data);
       } catch (err) {
         console.error(err);
       }
     };
-    if (group) getServerList();
+    if (group) {
+      getServerList();
+      setServiceData({
+        ...serviceData,
+        groupId: group.serverGrpId,
+        groupName: group.serverGrpName,
+        serverId: "",
+        serverName: "",
+        alertId: "",
+        alertName: "",
+      });
+    } else {
+      setServiceData({
+        ...serviceData,
+        groupId: "",
+        groupName: "",
+        serverId: "",
+        serverName: "",
+        alertId: "",
+        alertName: "",
+      });
+    }
+    // eslint-disable-next-line
   }, [group]);
+
+  useEffect(() => {
+    if (server) {
+      setServiceData({
+        ...serviceData,
+        serverId: server.serverId,
+        serverName: server.serverName,
+        alertId: "",
+        alertName: "",
+      });
+    } else {
+      setServiceData({
+        ...serviceData,
+        serverId: "",
+        serverName: "",
+        alertId: "",
+        alertName: "",
+      });
+    }
+    // eslint-disable-next-line
+  }, [server]);
 
   // handle change event of the service dropdown
   const handleserviceChange = (obj) => {
@@ -73,23 +142,6 @@ const ServerComponent = (props) => {
   const handleServerChange = (obj) => {
     setServer(obj);
   };
-
-  
-  const { setServiceData } = props;
-  useEffect(() => {
-    if (service && group && server)
-      setServiceData({
-        serviceId: service.serviceId,
-        serviceName: service.ServiceName,
-        groupId: group.serverGrpId,
-        groupName: group.serverGrpName,
-        serverId: server.serverId,
-        serverName: server.serverName,
-        alertId: "",
-        alertName: "",
-      });
-    // eslint-disable-next-line
-  }, [server]);
 
   return (
     <div className="col-lg-3 first">
@@ -129,3 +181,4 @@ const ServerComponent = (props) => {
 };
 
 export default ServerComponent;
+ 

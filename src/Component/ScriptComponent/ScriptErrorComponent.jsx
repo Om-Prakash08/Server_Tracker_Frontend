@@ -16,7 +16,7 @@ const ScriptErrorComponent = (props) => {
       )}
       {success && !Apierror && !emptyAlertError && (
         <p className="success-occured" style={{ marginLeft: 0 }}>
-          Successfully added!
+          Successfully saved!
         </p>
       )}
     </React.Fragment>

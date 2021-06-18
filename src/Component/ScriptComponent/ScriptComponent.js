@@ -122,7 +122,7 @@ const ScriptComponent = (props) => {
           className="login-btn"
           disabled={sending}
         >
-        Add
+        Save
         </Button>
       </form>
       <ScriptErrorComponent
