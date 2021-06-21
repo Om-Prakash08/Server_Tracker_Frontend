@@ -15,6 +15,13 @@
    font-size:0.9rem !important;
 }
 
+.login-error{
+  color:red ;
+  left: 20%;
+  bottom:12% ;
+  position:absolute ;
+  /* height:5px ; */
+}
 @media screen and (max-width: 992px) {
   .loginBox {
     width: 85%;
@@ -23,5 +30,8 @@
   }
   .login-btn{
     font-size:0.7rem !important;
+ }
+ .login-error{
+   bottom: 0.5%;
  }
 } 

@@ -12,16 +12,16 @@ import LoginPage from '../src/Component/LoginPageComponent/LoginPage' ;
 
 
 function App() {
-   const [isAuth ,setIsAuth] =useState(false) ;
+   const [Token ,setToken] =useState("") ;
    let routes ;
-   if(isAuth)
+   if(Token)
     {
      routes= (
-       <ServerPage />
+       <ServerPage token={Token}/>
      )
     }
   else
-   {routes =(<LoginPage onAuth={setIsAuth}/>)}
+   {routes =(<LoginPage onAuth={setToken}/>)}
 
   return (
     <Router>
