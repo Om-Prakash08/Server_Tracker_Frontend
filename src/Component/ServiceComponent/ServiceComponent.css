@@ -1,3 +1,16 @@
 .Dropdown-container{
-    padding-top: 1rem;
+    padding:1.6rem 0;
+    /* background-color :#97999b ; */
+}
+/* .select{
+    background-color:green !important;
+} */
+
+.select-div{
+  box-shadow: 14px 14px 20px #cbced1, -14px -14px  20px white;
+  /* box-shadow: inset 4px 4px 8px #cbced1,inset -4px -4px  8px white; */
+  height: 85px;
+  border-radius: 10px;
+  padding:5px 10px ;
+  margin-bottom: 10px;
 }

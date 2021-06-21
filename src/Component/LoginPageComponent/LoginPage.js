@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "./LoginPage.css";
+import axios from "axios";
 
 const LoginPage = (props) => {
   const [loginData, setLoginData] = useState({
-    username :"" ,
-    password :"" ,
+    username: "",
+    password: "",
   });
-  
+  const [err, setErr] = useState("");
 
   const updateLoginData = (event) =>
     setLoginData({
@@ -19,9 +20,27 @@ const LoginPage = (props) => {
   const { username, password } = loginData;
 
   function handleSubmit(event) {
-   // console.log(loginData);
-    props.onAuth(true) ;
     event.preventDefault();
+    const sendAuthData = async () => {
+      try {
+        const resp = await axios({
+          method: "POST",
+          url: `http://localhost:3001/auth/login`,
+          data: {
+            email: username,
+            password,
+          },
+          headers: {
+            "x-auth-token": props.token,
+          },
+        });
+        props.onAuth(resp.data);
+      } catch (err) {
+        console.error(err);
+        setErr("Invalid Username or password.");
+      }
+    };
+    sendAuthData();
   }
 
   return (
@@ -29,30 +48,44 @@ const LoginPage = (props) => {
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <TextField
-          id="standard-secondary"
+          id="standard-primary"
           label="User name"
           fullWidth
-          style={{ margin: 18}}
+          style={{ margin: 18 }}
           type="email"
           name="username"
           value={username}
           onChange={updateLoginData}
+          required
         />
         <TextField
           id="standard-secondary"
           label="Password"
           fullWidth
-          style={{ margin:18 }}
+          style={{ margin: 18 }}
+          type="password"
           name="password"
           value={password}
           onChange={updateLoginData}
+          required
         />
         <div className="login-div-btn">
-        <Button variant="contained" size="large" color="primary" type="submit" className="login-btn" style={{margin:20}} >
-          Login
-        </Button>
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            type="submit"
+            className="login-btn"
+            style={{ margin: 20 }}
+          >
+            Login
+          </Button>
         </div>
       </form>
+
+      <div className="login-error">
+        <p>{err}</p>
+      </div>
       {/* <p>
         Aleady have an account? <br />
         <a href="/">Log in here</a>
