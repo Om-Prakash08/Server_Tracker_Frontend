@@ -1,8 +1,7 @@
 import axios from "axios";
-//const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNzkzODY4LWZjYTctNGZjYy1hZWVjLTBlNDE0ZGI4ZjNiNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYyNDI2MTMxMH0.Nma6U7J2wabQ36P4S3IlOqggp4xbbIDnbq_vdVUKGs8" ;
 const getServiceList = async (setServiceList,token) => {
   try {
-    const resp = await axios.get("http://localhost:3001/service/", {
+    const resp = await axios.get(`${process.env.REACT_APP_BACKEND_API_URL}/service/`, {
       headers: {
         "x-auth-token": token ,
       },
@@ -19,7 +18,7 @@ const getGroupList = async (setGroupList, service,token) => {
   try {
     const resp = await axios({
       method: "POST",
-      url: `http://localhost:3001/serverGrp/`,
+      url: `${process.env.REACT_APP_BACKEND_API_URL}/serverGrp/`,
       data: {
         serviceName:name,
       },
@@ -38,7 +37,7 @@ const getServerList = async (setServerList, group,token) => {
   try {
     const resp = await axios({
       method: "POST",
-      url: `http://localhost:3001/server/`,
+      url: `${process.env.REACT_APP_BACKEND_API_URL}/server/`,
       data: {
         serverGrpName:name,
       },

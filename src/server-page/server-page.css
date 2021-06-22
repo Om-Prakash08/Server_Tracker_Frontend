@@ -30,26 +30,22 @@
 }
 
 .three-part-outer-div {
-  
   margin-top: 3rem;
   padding-bottom: 20px;
 }
 .first,
 .second,
 .third {
-  /* border: solid 1px #c8c2bc; */
   max-height: 550px;
-  
-  /* padding-top: 2%; */
 }
 .first {
   margin-right: 4% !important;
-  padding-top:20px ;
+  padding-top: 20px;
   border-radius: 15px;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
 }
 .second {
-  padding:1rem 0 !important;
+  padding: 1rem 0 !important;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
@@ -58,21 +54,25 @@
   padding: 1rem 0 1.5rem;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  box-shadow: 14px 14px 20px #cbced1, 0px -14px  20px white;
-  
+  box-shadow: 14px 14px 20px #cbced1, 0px -14px 20px white;
 }
-
-/************************************************** ServerComponent **********************************/
+.error-occured {
+  margin-left: 10px;
+  color: red;
+}
+.success-occured {
+  color: green;
+}
 
 @media screen and (max-width: 992px) {
   .containt {
-    height: 1640px;
+    height: 1630px;
   }
   .three-part-outer-div {
     height: 1000px;
   }
   .third {
-    padding: 1.0rem 0;
+    padding: 1rem 0;
   }
   .second,
   .third {
@@ -95,10 +95,6 @@
   }
 }
 @media screen and (max-width: 1400px) and (min-width: 992px) {
-  /* .samsung-logo{
-        padding-left: 0;
-        font-size: 2.7rem;  
-    } */
   .containt {
     padding-left: 4% !important;
     height: fit-content;

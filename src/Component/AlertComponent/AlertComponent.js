@@ -3,7 +3,7 @@ import Radio from "./Radio";
 import axios from "axios";
 
 const AlertComponent = (props) => {
-  const { onChanged, serviceData,token } = props;
+  const { onChanged, serviceData, token } = props;
   const [serverIsSelected, setServerSelected] = useState(false);
   const [alertList, setAlertList] = useState([]);
   const [selected, setSelected] = useState({
@@ -15,13 +15,12 @@ const AlertComponent = (props) => {
       try {
         const resp = await axios({
           method: "GET",
-          url: `http://localhost:3001/alert`,
+          url: `${process.env.REACT_APP_BACKEND_API_URL}/alert`,
           headers: {
-            "x-auth-token": token ,
+            "x-auth-token": token,
           },
         });
         setAlertList(resp.data);
-        // console.log(resp.data);
       } catch (err) {
         console.error(err);
       }
@@ -47,8 +46,6 @@ const AlertComponent = (props) => {
       setServerSelected(false);
     }
   }, [serviceData]);
-  // console.log("serverId=", serviceData.serverId);
-  // console.log("serverGrpId=", serviceData.groupId);
 
   return (
     <div className="col-lg-2 second">
