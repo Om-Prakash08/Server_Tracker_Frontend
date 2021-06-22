@@ -30,6 +30,7 @@ const ScriptComponent = (props) => {
         serviceAlertData.alertName,
         token
       );
+    setSuccess(false);
     // eslint-disable-next-line
   }, [serviceAlertData]);
 
@@ -64,12 +65,6 @@ const ScriptComponent = (props) => {
       setEmptyAlertError(true);
     }
     e.preventDefault();
-    // console.log("inputFields", inputFields);
-    // console.log({
-    //   serverId: serviceAlertData.serverId,
-    //   alertId: serviceAlertData.alertId,
-    //   scriptFile: inputFields,
-    // });
   };
 
   return (

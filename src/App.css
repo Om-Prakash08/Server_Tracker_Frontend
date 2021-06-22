@@ -17,10 +17,3 @@ body {
     min-height: fit-content;
   }
 }
-.error-occured{
-  margin-left:10px ;
-  color:red ;
-}
-.success-occured{
-  color:green ;
-}

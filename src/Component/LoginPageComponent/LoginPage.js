@@ -25,7 +25,7 @@ const LoginPage = (props) => {
       try {
         const resp = await axios({
           method: "POST",
-          url: `http://localhost:3001/auth/login`,
+          url: `${process.env.REACT_APP_BACKEND_API_URL}/auth/login`,
           data: {
             email: username,
             password,
@@ -86,10 +86,6 @@ const LoginPage = (props) => {
       <div className="login-error">
         <p>{err}</p>
       </div>
-      {/* <p>
-        Aleady have an account? <br />
-        <a href="/">Log in here</a>
-      </p> */}
     </div>
   );
 };

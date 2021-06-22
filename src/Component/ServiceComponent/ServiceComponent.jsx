@@ -97,12 +97,12 @@ const ServerComponent = (props) => {
     setGroup(null);
   };
 
-  // handle change event of the groupuage dropdown
+  // handle change event of the group dropdown
   const handleGroupChange = (obj) => {
     setGroup(obj);
     setServer(null);
   };
-
+  // handle change event of the server dropdown
   const handleServerChange = (obj) => {
     setServer(obj);
   };
