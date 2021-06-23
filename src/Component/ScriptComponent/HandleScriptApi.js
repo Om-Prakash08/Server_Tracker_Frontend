@@ -14,6 +14,7 @@ const getScriptValue = async (setInputFields, serverName, alertName, token) => {
       },
     });
     const values = [];
+    //sort script according to id to get correct order of script
     resp.data.sort(function (a, b) {
       return a.scriptId - b.scriptId;
     });
@@ -37,9 +38,7 @@ const sendScriptValue = async (
   token
 ) => {
   SetSending(true);
-  setApiError(false);
-  // console.log(`${process.env.REACT_APP_BACKEND_API_URL}/script/new`);
-  // console.log(data);
+  setApiError(false) ;
   try {
     const resp = await axios({
       method: "POST",
