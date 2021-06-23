@@ -30,9 +30,12 @@ const ScriptComponent = (props) => {
         serviceAlertData.alertName,
         token
       );
+    else{
+      setInputFields([{ script: "" }]);
+    }
     setSuccess(false);
     // eslint-disable-next-line
-  }, [serviceAlertData]);
+  }, [serviceAlertData.alertName,serviceAlertData.serverName]);
 
   const handleAddFields = (index) => {
     const values = [...inputFields];
