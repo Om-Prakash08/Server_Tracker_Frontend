@@ -66,6 +66,8 @@ const ServerComponent = (props) => {
         alertId: "",
         alertName: "",
       });
+      setServerList([]);
+      setServer(null) ;
     }
     // eslint-disable-next-line
   }, [group]);
