@@ -25,9 +25,13 @@ const AlertComponent = (props) => {
         console.error(err);
       }
     };
-    if (serviceData) getAlertList();
+   getAlertList();
+   setSelected({
+    id: "",
+    name: "",
+  }) ;
     // eslint-disable-next-line
-  }, [serviceData]);
+  }, [serviceData.serverName]);
 
   useEffect(() => {
     if (serverIsSelected && selected) {
@@ -39,6 +43,7 @@ const AlertComponent = (props) => {
     }
     // eslint-disable-next-line
   }, [selected, serverIsSelected]);
+
   useEffect(() => {
     if (serviceData.serverId) {
       setServerSelected(true);
