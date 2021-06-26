@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import Radio from "./Radio";
 import axios from "axios";
+import LoadingSpinner from "../loadingSpinner";
 
 const AlertComponent = (props) => {
   const { onChanged, serviceData, token } = props;
   const [serverIsSelected, setServerSelected] = useState(false);
   const [alertList, setAlertList] = useState([]);
+  const[loading ,setLoading]=useState(false) ;
   const [selected, setSelected] = useState({
     id: "",
     name: "",
   });
   useEffect(() => {
     const getAlertList = async () => {
+      setLoading(true) ;
       try {
         const resp = await axios({
           method: "GET",
@@ -24,6 +27,7 @@ const AlertComponent = (props) => {
       } catch (err) {
         console.error(err);
       }
+      setLoading(false) ;
     };
    getAlertList();
    setSelected({
@@ -54,9 +58,7 @@ const AlertComponent = (props) => {
 
   return (
     <div className="col-lg-2 second">
-      <div className="alert-heading-div">
-        <h1 className="Alert-heading">Alert</h1>
-      </div>
+    <LoadingSpinner loading={loading}/>
       <div className="radio-container">
         {alertList.map((alert) => (
           <Radio
@@ -66,13 +68,16 @@ const AlertComponent = (props) => {
             selected={selected}
             text={alert.alertName}
             onChange={setSelected}
+            first={alert===alertList[0]}
           />
         ))}
       </div>
       {!serverIsSelected && selected.id && (
+        <div>
         <p className="error-occured" style={{ marginTop: 8 }}>
           Please select server first.
         </p>
+        </div>
       )}
     </div>
   );

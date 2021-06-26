@@ -2,9 +2,9 @@ import React from "react";
 import "./radio.css";
 
 const Radio = (props) => {
-  const { selected, onChange, text, value, id } = props;
+  const { selected, onChange, text, value, id,first } = props;
   return (
-    <div className={`modern-radio-container ${value === selected.name && "selected-container"}`}
+    <div className={`modern-radio-container ${value === selected.name && "selected-container"} ${first && "first-container"}`}
       onClick={() => {
         onChange({ id: id, name: value });
       }}

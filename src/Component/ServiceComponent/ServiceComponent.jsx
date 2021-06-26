@@ -11,15 +11,20 @@ const ServerComponent = (props) => {
   const [groupList, setGroupList] = useState([]);
   const [server, setServer] = useState(null);
   const [serverList, setServerList] = useState([]);
+  const [loading, setLoading]=useState(false) ;
 
   useEffect(() => {
-    getServiceList(setServiceList,token);
+    
+    getServiceList(setServiceList,token,setLoading);
+  
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (service) {
-      getGroupList(setGroupList, service,token);
+      
+      getGroupList(setGroupList, service,token,setLoading);
+     
       setServiceData({
         serviceId: service.serviceId,
         serviceName: service.ServiceName,
@@ -46,7 +51,9 @@ const ServerComponent = (props) => {
 
   useEffect(() => {
     if (group) {
-      getServerList(setServerList, group,token);
+  
+      getServerList(setServerList, group,token,setLoading);
+     
       setServiceData({
         ...serviceData,
         groupId: group.serverGrpId,
@@ -120,6 +127,7 @@ const ServerComponent = (props) => {
       server={server}
       serverList={serverList}
       handleServerChange={handleServerChange}
+      loading ={loading}
     />
   );
 };

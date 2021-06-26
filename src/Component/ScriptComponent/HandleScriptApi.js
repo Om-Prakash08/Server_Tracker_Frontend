@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const getScriptValue = async (setInputFields, serverName, alertName, token) => {
+const getScriptValue = async (setInputFields, serverName, alertName, token,setLoading) => {
+  setLoading(true) ;
   try {
     const resp = await axios({
       method: "POST",
@@ -27,6 +28,7 @@ const getScriptValue = async (setInputFields, serverName, alertName, token) => {
   } catch (err) {
     console.error(err);
   }
+  setLoading(false) ;
 };
 
 const sendScriptValue = async (
@@ -34,10 +36,12 @@ const sendScriptValue = async (
   setApiError,
   setSuccess,
   data,
-  token
+  token,
+  setLoading
 ) => {
   SetSending(true);
   setApiError(false);
+  setLoading(true) ;
   try {
     const resp = await axios({
       method: "POST",
@@ -54,6 +58,7 @@ const sendScriptValue = async (
     console.error(err);
   }
   SetSending(false);
+  setLoading(false) ;
 };
 
 export { getScriptValue, sendScriptValue };

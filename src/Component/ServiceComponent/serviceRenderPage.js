@@ -1,5 +1,5 @@
 import Select from "react-select";
-
+import LoadingSpinner from "../loadingSpinner";
 const ServiceRenderPage = (props) => {
   const {
     service,
@@ -11,9 +11,17 @@ const ServiceRenderPage = (props) => {
     server,
     serverList,
     handleServerChange,
+    loading
   } = props;
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 50,
+    })
+  };
   return (
     <div className="col-lg-3 first">
+     <LoadingSpinner loading={loading}/>
       <div className="Dropdown-container">
         <div className="select-div">
           <b style={{ margin: 4 }}>Service</b>
@@ -24,6 +32,7 @@ const ServiceRenderPage = (props) => {
             onChange={handleserviceChange}
             getOptionLabel={(x) => x.serviceName}
             getOptionValue={(x) => x.serviceId}
+            styles={customStyles}
             theme={(theme) => ({
               ...theme,
               borderRadius: 8,
@@ -46,6 +55,7 @@ const ServiceRenderPage = (props) => {
             onChange={handleGroupChange}
             getOptionLabel={(x) => x.serverGrpName}
             getOptionValue={(x) => x.serverGrpId}
+            styles={customStyles}
             theme={(theme) => ({
               ...theme,
               borderRadius: 8,
@@ -68,6 +78,7 @@ const ServiceRenderPage = (props) => {
             onChange={handleServerChange}
             getOptionLabel={(x) => x.serverName}
             getOptionValue={(x) => x.serverId}
+            styles={customStyles}
             theme={(theme) => ({
               ...theme,
               borderRadius: 8,

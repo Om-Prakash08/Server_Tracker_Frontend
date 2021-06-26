@@ -1,36 +1,34 @@
-.alert-heading-div {
-  text-align: center;
-  margin-bottom: 30px;
-}
+
 .radio-container {
   overflow: auto;
-  max-height: 350px;
-  margin-bottom: 20px;
-  box-shadow: inset 6px 0px 6px #cbced1, inset -10px -10px 12px white;
-  border-radius: 20px;
-  padding: 15px 10px;
+  max-height:65vh ;
 }
 .radio-container::-webkit-scrollbar {
-  width: 0.8px;
+  width: 2px;
 }
 .radio-container::-webkit-scrollbar-thumb {
-  background-color: rgb(127, 127, 134);
+  background-color: rgb(199, 199, 202);
   border-radius: 3px;
+}
+.first-container{
+  border-top-left-radius:15px ;
 }
 .modern-radio-container {
   margin: 0;
   cursor: pointer;
   user-select: none;
   display: flex;
-  height: 4rem;
+  height: 5.3rem;
   align-items: center;
-  border-radius: 15px;
+  z-index: 1;
   padding-left: 0.8rem;
+  border:1px solid rgb(216, 216, 216) ;
 }
 .selected-container {
   background-color: rgb(253, 224, 224);
   border: solid 1px red;
 }
+
 
 .radio-outer-circle {
   width: 23px;

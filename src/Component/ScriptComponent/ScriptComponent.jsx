@@ -7,6 +7,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import IconButton from "@material-ui/core/IconButton";
 import { getScriptValue, sendScriptValue } from "./HandleScriptApi";
+import LoadingSpinner from "../loadingSpinner";
 
 const ScriptComponent = (props) => {
   const { serviceAlertData, AlertType, token } = props;
@@ -14,6 +15,7 @@ const ScriptComponent = (props) => {
   const [Apierror, setApiError] = useState(false);
   const [emptyAlertError, setEmptyAlertError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [loading ,setLoading]=useState(false) ;
   const [inputFields, setInputFields] = useState([
     { script: "" },
     { script: "" },
@@ -24,14 +26,19 @@ const ScriptComponent = (props) => {
 
   useEffect(() => {
     if (serviceAlertData.alertName && serviceAlertData.serverName)
-      getScriptValue(
+      { 
+        getScriptValue(
         setInputFields,
         serviceAlertData.serverName,
         serviceAlertData.alertName,
-        token
-      );
+        token ,
+        setLoading
+      ); 
+     }
     else{
-      setInputFields([{ script: "" }]);
+      setInputFields([{ script: "" },
+      { script: "" },
+      { script: "" }]);
     }
     setSuccess(false);
     // eslint-disable-next-line
@@ -57,13 +64,15 @@ const ScriptComponent = (props) => {
 
   const handleSubmit = (e) => {
     if (AlertType) {
+      
       const data = {
         alertName: serviceAlertData.alertName,
         serverName: serviceAlertData.serverName,
         scripts: inputFields,
       };
-      sendScriptValue(SetSending, setApiError, setSuccess, data, token);
+      sendScriptValue(SetSending, setApiError, setSuccess, data, token,setLoading);
       setEmptyAlertError(false);
+      
     } else {
       setEmptyAlertError(true);
     }
@@ -71,10 +80,12 @@ const ScriptComponent = (props) => {
   };
 
   return (
+    
     <div className="col-lg-6 third">
+     <LoadingSpinner loading={loading}/>
       <div className="Script-heading">
-        <h1 id="Alert-heading" className="Alert-heading">
-          Script
+        <h1 id="Alert-heading" style={{color:"red"}} className="Alert-heading">
+          {serviceAlertData.alertName}
         </h1>
       </div>
       <form onSubmit={handleSubmit}>
@@ -125,11 +136,13 @@ const ScriptComponent = (props) => {
         </div>
         <Button
           variant="contained"
-          size="medium"
+          size="large"
           color="primary"
           type="submit"
           className="script-submit-btn"
           disabled={sending}
+          style={{textTransform: 'none' ,fontSize: 18}}
+          
         >
           Save
         </Button>
