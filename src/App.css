@@ -7,7 +7,7 @@ body {
   width: 100%;
   min-height: 100%;
   background-image: linear-gradient(darkblue, rgb(1, 1, 56)), url("./img/polaroid.png");
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   font-size: 20px;
   overflow-x: hidden;
 }
