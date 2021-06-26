@@ -49,10 +49,8 @@ const LoginPage = (props) => {
           })
         );
       } catch (err) {
-        if(err.response.status===404)
-         setErr("Bad network!");
-        else
-         setErr("Invalid Username or password.");
+        if (err.response.status === 404) setErr("Bad network!");
+        else setErr("Invalid Username or password.");
       }
     };
     sendAuthData();
@@ -92,6 +90,8 @@ const LoginPage = (props) => {
               value={username}
               onChange={updateLoginData}
               required
+              inputProps={{ style: { fontSize: 20 } }} // font size of input text
+              InputLabelProps={{ style: { fontSize: 22 } }}
             />
             <TextField
               id="standard-secondary"
@@ -102,15 +102,14 @@ const LoginPage = (props) => {
               name="password"
               value={password}
               onChange={updateLoginData}
+              inputProps={{ style: { fontSize: 20 } }} // font size of input text
+              InputLabelProps={{ style: { fontSize: 22 } }}
               required
               InputProps={{
                 // <-- This is where the toggle button is added.
                 endAdornment: (
                   <InputAdornment position="end">
-                    <VisibilityIcon
-                     
-                      onClick={togglePasswordVisiblity}
-                    />
+                    <VisibilityIcon onClick={togglePasswordVisiblity} />
                   </InputAdornment>
                 ),
               }}
